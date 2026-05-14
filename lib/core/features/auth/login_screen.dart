@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 22.6.w),
+          padding: EdgeInsets.only(top: 59.h, left: 24.w, right: 31.w),
           child: SingleChildScrollView(
             child: Form(
               key: formKey,
@@ -55,13 +55,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   CustomTextField(
                     controller: emailController,
                     hintText: "Enter User Name",
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your user name';
-                      }
-                      // You can add more complex email validation here if needed
-                      return null;
-                    },
+                    // validator: (value) {
+                    //   if (value == null || value.isEmpty) {
+                    //     return 'Please enter your user name';
+                    //   }
+                    //   // You can add more complex email validation here if needed
+                    //   return null;
+                    // },
                   ),
                   Gap(15.h),
                   Text("Password", style: AppStyles.black16w500style),
@@ -73,21 +73,19 @@ class _LoginScreenState extends State<LoginScreen> {
                       Icons.remove_red_eye,
                       color: AppColors.secondarycolor,
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty || value.length < 6) {
-                        return 'Please enter your password at least 6 characters';
-                      }
-                      // You can add more complex password validation here if needed
-                      return null;
-                    },
+                    // validator: (value) {
+                    //   if (value == null || value.isEmpty || value.length < 6) {
+                    //     return 'Please enter your password at least 6 characters';
+                    //   }
+                    //   // You can add more complex password validation here if needed
+                    //   return null;
+                    // },
                   ),
                   Gap(55.h),
                   PrimaryButtonwidget(
                     onpress: () {
                       if (formKey.currentState!.validate()) {
-                        GoRouter.of(
-                          context,
-                        ).pushNamed(AppRoutes.verifyCodeScreen);
+                        GoRouter.of(context).pushNamed(AppRoutes.mainScreen);
                       }
                     },
                     buttontext: "Sign In",
@@ -115,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 TapGestureRecognizer() //"عشان لما بدنا نعمل الكلمة كزر"
                                   ..onTap = () {
                                     RouterGenretionConfig.goRouter.pushNamed(
-                                      AppRoutes.registerscreen,
+                                      AppRoutes.signupscreen,
                                     );
                                   },
                           ),
