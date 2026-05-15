@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/features/home_screen/widgets/category_item_widget.dart';
 import 'package:ecommerce_app/core/features/home_screen/widgets/prodect_item_widget.dart';
+import 'package:ecommerce_app/core/routing/app_routes.dart';
 import 'package:ecommerce_app/core/styling/app_assets.dart';
 import 'package:ecommerce_app/core/styling/app_colors.dart';
 import 'package:ecommerce_app/core/styling/app_styles.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -71,10 +73,33 @@ class HomeScreen extends StatelessWidget {
             child: GridView(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                crossAxisSpacing: 16.sp,
-                mainAxisSpacing: 16.sp,
+                crossAxisSpacing: 8.sp,
+                mainAxisSpacing: 8.sp,
+                childAspectRatio: 0.73.sp,
               ),
-              children: [],
+              children: [
+                ProdectItemWidget(
+                  title: "Title",
+                  price: r"1999$",
+                  onTap: () => GoRouter.of(
+                    context,
+                  ).pushNamed(AppRoutes.productdetailsScreen),
+                ),
+                ProdectItemWidget(
+                  title: "Title",
+                  price: r"1999$",
+                  onTap: () => GoRouter.of(
+                    context,
+                  ).pushNamed(AppRoutes.productdetailsScreen),
+                ),
+                ProdectItemWidget(
+                  title: "Title",
+                  price: r"1999$",
+                  onTap: () => GoRouter.of(
+                    context,
+                  ).pushNamed(AppRoutes.productdetailsScreen),
+                ),
+              ],
             ),
           ),
         ],

@@ -24,8 +24,8 @@ class AppStyles {
     fontWeight: FontWeight.w400,
     color: AppColors.secondarycolor,
   );
-  static TextStyle black15boldstyle = TextStyle(
-    fontSize: 15.sp,
+  static TextStyle black16boldstyle = TextStyle(
+    fontSize: 16.sp,
     fontWeight: FontWeight.bold,
     color: AppColors.blackcolor,
   );

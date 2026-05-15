@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/core/features/acount_screen/acount_screen.dart';
+import 'package:ecommerce_app/core/features/cart_screen/cart_screen.dart';
 import 'package:ecommerce_app/core/features/home_screen/home_screen.dart';
 import 'package:ecommerce_app/core/styling/app_assets.dart';
 import 'package:ecommerce_app/core/styling/app_colors.dart';
@@ -14,17 +16,15 @@ class MainScreen extends StatefulWidget {
 
 class MainScreenState extends State<MainScreen> {
   int selectedIndex = 0;
-  List<Widget> screens = [
-    HomeScreen(),
-    Container(color: Colors.green),
-    Container(color: Colors.yellow),
-  ];
+  List<Widget> screens = [HomeScreen(), CartScreen(), AcountScreen()];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: screens[selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: const Color(0xffFFFFFF),
+          elevation: 0,
           type: BottomNavigationBarType.fixed,
           selectedItemColor: AppColors.primarycolor,
           unselectedItemColor: AppColors.graycolor,

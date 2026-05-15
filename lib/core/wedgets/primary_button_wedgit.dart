@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/core/styling/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 
 class PrimaryButtonwidget extends StatelessWidget {
   final String? buttontext;
@@ -10,6 +11,8 @@ class PrimaryButtonwidget extends StatelessWidget {
   final double? borderradius;
   final Color? textColor;
   final double? fontsize;
+  final Widget? icon;
+  final Widget? trailingicon;
   final void Function()? onpress;
 
   const PrimaryButtonwidget({
@@ -22,6 +25,8 @@ class PrimaryButtonwidget extends StatelessWidget {
     this.textColor,
     this.onpress,
     this.fontsize,
+    this.icon,
+    this.trailingicon,
   });
 
   @override
@@ -35,13 +40,23 @@ class PrimaryButtonwidget extends StatelessWidget {
         ),
         fixedSize: Size(width ?? 331.w, height ?? 56.h),
       ),
-      child: Text(
-        buttontext ?? "Button",
-        style: TextStyle(
-          color: textColor ?? Colors.white,
-          fontSize: fontsize ?? 16.sp,
-          fontWeight: FontWeight.w500,
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          icon != null ? icon! : SizedBox.shrink(),
+          icon != null ? Gap(8.w) : SizedBox.shrink(),
+
+          Text(
+            buttontext ?? "Button",
+            style: TextStyle(
+              color: textColor ?? Colors.white,
+              fontSize: fontsize ?? 16.sp,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          trailingicon != null ? Gap(8.w) : SizedBox.shrink(),
+          trailingicon != null ? trailingicon! : SizedBox.shrink(),
+        ],
       ),
     );
   }

@@ -83,6 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Gap(55.h),
                   PrimaryButtonwidget(
+                    icon: null,
                     onpress: () {
                       if (formKey.currentState!.validate()) {
                         GoRouter.of(context).pushNamed(AppRoutes.mainScreen);
@@ -99,13 +100,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       textAlign: TextAlign.center,
                       text: TextSpan(
                         text: "Don't have an account ? ",
-                        style: AppStyles.black15boldstyle.copyWith(
+                        style: AppStyles.black16boldstyle.copyWith(
                           color: AppColors.graycolor,
                         ),
                         children: [
                           TextSpan(
                             text: "Join",
-                            style: AppStyles.black15boldstyle.copyWith(
+                            style: AppStyles.black16boldstyle.copyWith(
                               color: AppColors.blackcolor,
                               fontSize: 15.sp,
                             ),
