@@ -2,7 +2,6 @@ import 'package:ecommerce_app/core/features/acount_screen/widgets/acount_item_wi
 import 'package:ecommerce_app/core/routing/app_routes.dart';
 import 'package:ecommerce_app/core/styling/app_assets.dart';
 import 'package:ecommerce_app/core/styling/app_styles.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -66,8 +65,8 @@ class AcountScreen extends StatelessWidget {
             height: 1,
             thickness: 1,
             color: const Color(0xffE6E6E6),
-            indent: 40.w, // هاد الرقم بيحسب (عرض الأيقونة 24 + الفراغ 16)
-            endIndent: 0, // خليه 0 عشان يوصل لآخر الشاشة من اليمين
+            indent: 40.w,
+            endIndent: 0,
           ),
           Gap(25.h),
           AcountItemWidget(
