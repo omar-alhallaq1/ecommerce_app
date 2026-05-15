@@ -50,8 +50,8 @@ class AcountScreen extends StatelessWidget {
             height: 1,
             thickness: 1,
             color: const Color(0xffE6E6E6),
-            indent: 40.w, // هاد الرقم بيحسب (عرض الأيقونة 24 + الفراغ 16)
-            endIndent: 0, // خليه 0 عشان يوصل لآخر الشاشة من اليمين
+            indent: 40.w,
+            endIndent: 0,
           ),
           Gap(25.h),
           AcountItemWidget(
@@ -80,8 +80,8 @@ class AcountScreen extends StatelessWidget {
             height: 1,
             thickness: 1,
             color: const Color(0xffE6E6E6),
-            indent: 40.w, // هاد الرقم بيحسب (عرض الأيقونة 24 + الفراغ 16)
-            endIndent: 0, // خليه 0 عشان يوصل لآخر الشاشة من اليمين
+            indent: 40.w,
+            endIndent: 0,
           ),
           Gap(25.h),
           AcountItemWidget(

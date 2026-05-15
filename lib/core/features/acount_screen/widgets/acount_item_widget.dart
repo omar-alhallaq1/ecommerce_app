@@ -30,10 +30,7 @@ class AcountItemWidget extends StatelessWidget {
                 // إذا كانت الايقونة موجودة ارسمها، إذا لا حط ويدجت بديل (مثلاً دائرة أو أيقونة افتراضية)
                 icon != null && icon!.isNotEmpty
                     ? SvgPicture.asset(icon!, height: 24.h, width: 24.w)
-                    : Icon(
-                        Icons.person,
-                        size: 24.h,
-                      ), // هاد هو "الاشي التاني" البديل
+                    : Icon(Icons.person, size: 24.h),
                 Gap(16.w),
                 Text(
                   title,

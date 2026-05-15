@@ -31,7 +31,6 @@ class AdressItemWidget extends StatelessWidget {
           SvgPicture.asset(AppAssets.location, height: 32.h, width: 32.w),
           Gap(16.w),
           Expanded(
-            // استخدمنا Expanded لضمان عدم حدوث Overflow في النصوص الطويلة
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
