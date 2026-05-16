@@ -4,7 +4,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioHelper {
   static Dio? dio;
-  static void initDio() {
+  static Future<void> initDio() async {
     dio ??= Dio(
       BaseOptions(
         baseUrl: ApiEndpoints.baseUrl,
@@ -42,8 +42,8 @@ class DioHelper {
         data: data,
       );
       return response.data;
-    } on DioException catch (e) {
-      throw e.message ?? "An error occurred";
+    } catch (e) {
+      rethrow;
     }
   }
 }
