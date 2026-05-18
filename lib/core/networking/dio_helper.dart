@@ -3,8 +3,8 @@ import 'package:ecommerce_app/core/networking/api_endpoints.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioHelper {
-  static Dio? dio;
-  static Future<void> initDio() async {
+  Dio? dio;
+  DioHelper() {
     dio ??= Dio(
       BaseOptions(
         baseUrl: ApiEndpoints.baseUrl,
@@ -13,12 +13,10 @@ class DioHelper {
         receiveDataWhenStatusError: true,
       ),
     );
-    dio!.interceptors.add(
-      PrettyDioLogger(),
-    ); //"وظيفتها الأساسية هي تسهيل عملية تصحيح الأخطاء (Debugging) من خلال عرض تفاصيل طلبات الـ API بشكل منظم وجميل في الـ Console."
+    dio!.interceptors.add(PrettyDioLogger());
   }
 
-  static Future<dynamic> getrequest({
+  Future<dynamic> getrequest({
     required String endpoint,
     Map<String, dynamic>? query,
   }) async {
@@ -30,7 +28,7 @@ class DioHelper {
     }
   }
 
-  static Future<dynamic> postrequest({
+  Future<dynamic> postrequest({
     required String endpoint,
     Map<String, dynamic>? query,
     required Map<String, dynamic> data,

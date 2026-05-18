@@ -7,12 +7,15 @@ import 'package:ecommerce_app/core/features/auth/modles/login_response_modle.dar
 import 'package:ecommerce_app/core/networking/dio_helper.dart';
 
 class AuthRepo {
+  final DioHelper _dioHelper;
+
+  AuthRepo(this._dioHelper);
   Future<Either<String, LoginResponseModle>> login(
     String username,
     String password,
   ) async {
     try {
-      final response = await DioHelper.postrequest(
+      final response = await _dioHelper.postrequest(
         endpoint: AppConstants.login,
         data: {'username': username, 'password': password},
       );
