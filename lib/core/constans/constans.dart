@@ -1,9 +1,3 @@
 class AppConstants {
   static const String appName = 'Ecommerce App';
-  static const String baseUrl = 'https://fakestoreapi.com';
-  static const String register = '/users';
-  static const String login = '/auth/login';
-  static const String products = '/products';
-  static const String carts = '/carts';
-  static const String catproducts = '/categories';
 }

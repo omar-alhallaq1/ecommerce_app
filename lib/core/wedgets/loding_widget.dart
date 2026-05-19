@@ -6,7 +6,7 @@ import 'package:lottie/lottie.dart';
 class LodingWidget extends StatelessWidget {
   final double? width;
   final double? height;
-  const LodingWidget({super.key, required this.width, required this.height});
+  const LodingWidget({super.key, this.width, this.height});
 
   @override
   Widget build(BuildContext context) {

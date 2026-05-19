@@ -1,5 +1,5 @@
 class LoginResponseModle {
-  final String token;
+  final String? token;
   LoginResponseModle({required this.token});
 
   LoginResponseModle.fromJson(Map<String, dynamic> json)

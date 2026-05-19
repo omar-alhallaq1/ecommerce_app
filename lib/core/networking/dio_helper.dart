@@ -22,7 +22,7 @@ class DioHelper {
   }) async {
     try {
       final response = await dio!.get(endpoint, queryParameters: query);
-      return response.data;
+      return response;
     } on DioException catch (e) {
       throw e.message ?? "An error occurred";
     }
@@ -39,7 +39,7 @@ class DioHelper {
         queryParameters: query,
         data: data,
       );
-      return response.data;
+      return response;
     } catch (e) {
       rethrow;
     }
