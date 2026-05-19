@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
   TextEditingController userName = TextEditingController();
   TextEditingController password = TextEditingController();
-  bool isCheckingToken = true;
+
   @override
   void initState() {
     super.initState();
@@ -37,14 +37,9 @@ class _LoginScreenState extends State<LoginScreen> {
     password = TextEditingController();
     sl<StorageHelpar>().getToken().then((value) {
       if (value != null && value.isNotEmpty) {
-        // 🛡️ الحارس السحري: للتأكد إن الشاشة لسه حية وما سكرت أثناء الـ Async
+        //  الحارس السحري: للتأكد إن الشاشة لسه حية وما سكرت أثناءالـ Async
         if (!mounted) return;
-
-        // الحين أمن مية بالمية تعمل الـ Navigation بدون أي خوف
         GoRouter.of(context).pushReplacementNamed(AppRoutes.mainScreen);
-        setState(() {
-          isCheckingToken = false;
-        });
       }
     });
   }
