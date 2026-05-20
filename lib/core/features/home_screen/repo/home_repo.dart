@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:ecommerce_app/core/features/home_screen/model/categories_model.dart';
 import 'package:ecommerce_app/core/features/home_screen/model/products_model.dart';
 import 'package:ecommerce_app/core/networking/api_endpoints.dart';
 import 'package:ecommerce_app/core/networking/dio_helper.dart';
