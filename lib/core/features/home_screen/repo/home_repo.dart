@@ -20,14 +20,14 @@ class HomeRepo {
         // 2. نحولها إلى قائمة منتجات
         List<ProductModel> products = responseData
             .map((product) => ProductModel.fromJson(product))
-            .toList();
+            .toList(); // هنا بناخد البيانات الي جاية من السيرفر وبنبعتها تترجم في المودل
         // 3. نرجع النجاح
         return Right(products);
       } else {
         return Left("Failed to fetch products");
       }
-    } catch (e) {
-      return Left(e.toString());
+    } catch (error) {
+      return Left(error.toString());
     }
   }
 
@@ -36,7 +36,7 @@ class HomeRepo {
   ) async {
     try {
       final response = await _dioHelper.getrequest(
-        endpoint: ApiEndpoints.products + " /$catname",
+        endpoint: ApiEndpoints.products + "/$catname",
       );
 
       if (response.statusCode == 200) {
@@ -69,7 +69,7 @@ class HomeRepo {
         // 3. نرجع النجاح
         return Right(categories);
       } else {
-        return Left("Failed to fetch products");
+        return Left("Failed to fetch categories");
       }
     } catch (e) {
       return Left(e.toString());
