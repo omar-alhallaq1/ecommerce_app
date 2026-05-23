@@ -1,5 +1,7 @@
 import 'package:ecommerce_app/core/features/auth/cubit/auth_cubit.dart';
 import 'package:ecommerce_app/core/features/auth/repo/auth_repo.dart';
+import 'package:ecommerce_app/core/features/cart_screen/cubit/cart_cubit.dart';
+import 'package:ecommerce_app/core/features/cart_screen/repo/cart_repo.dart';
 import 'package:ecommerce_app/core/features/home_screen/cubit/categories_cubit.dart';
 import 'package:ecommerce_app/core/features/home_screen/cubit/product_cubit.dart';
 import 'package:ecommerce_app/core/features/home_screen/repo/home_repo.dart';
@@ -17,8 +19,10 @@ void setupServiceLocator() {
   sl.registerLazySingleton(() => StorageHelpar());
 
   //Repo// انشاء فوري قي الذاكرة
-  sl.registerSingleton(AuthRepo(sl<DioHelper>()));
-  sl.registerSingleton(HomeRepo(sl<DioHelper>()));
+  sl.registerLazySingleton(() => AuthRepo(sl<DioHelper>()));
+  sl.registerLazySingleton(() => HomeRepo(sl<DioHelper>()));
+  sl.registerLazySingleton(() => CartRepo(sl<DioHelper>()));
+
   //cubit
   sl.registerFactory(
     () => AuthCubit(sl<AuthRepo>()),
@@ -27,4 +31,5 @@ void setupServiceLocator() {
   );
   sl.registerFactory(() => ProductCubit(sl<HomeRepo>()));
   sl.registerFactory(() => CategoriesCubit(sl<HomeRepo>()));
+  sl.registerFactory(() => CartCubit(sl<CartRepo>()));
 }

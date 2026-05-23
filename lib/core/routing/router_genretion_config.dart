@@ -2,6 +2,8 @@ import 'package:ecommerce_app/core/features/address_screen/adress_screen.dart';
 import 'package:ecommerce_app/core/features/auth/cubit/auth_cubit.dart';
 import 'package:ecommerce_app/core/features/auth/login_screen.dart';
 import 'package:ecommerce_app/core/features/auth/signup_screen.dart';
+import 'package:ecommerce_app/core/features/cart_screen/cubit/cart_cubit.dart';
+import 'package:ecommerce_app/core/features/home_screen/model/products_model.dart';
 import 'package:ecommerce_app/core/features/mainscreen/main_screen.dart';
 import 'package:ecommerce_app/core/features/product_details_screen/product_details_screen.dart';
 import 'package:ecommerce_app/core/routing/app_routes.dart';
@@ -33,13 +35,23 @@ class RouterGenretionConfig {
         name: AppRoutes.mainScreen,
         path: AppRoutes.mainScreen,
 
-        builder: (context, state) => const MainScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => sl<CartCubit>(),
+          child: const MainScreen(),
+        ),
       ),
       GoRoute(
         name: AppRoutes.productdetailsScreen,
         path: AppRoutes.productdetailsScreen,
 
-        builder: (context, state) => const ProductDitailsScreen(),
+        builder: (context, state) {
+          ProductModel product = state.extra as ProductModel;
+          return BlocProvider(
+            create: (context) => sl<CartCubit>(),
+
+            child: ProductDitailsScreen(product: product),
+          );
+        },
       ),
       GoRoute(
         name: AppRoutes.adressScreen,

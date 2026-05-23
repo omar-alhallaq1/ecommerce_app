@@ -36,7 +36,7 @@ class HomeRepo {
   ) async {
     try {
       final response = await _dioHelper.getrequest(
-        endpoint: ApiEndpoints.products + "/$catname",
+        endpoint: "${ApiEndpoints.products}/category/$catname",
       );
 
       if (response.statusCode == 200) {
@@ -64,7 +64,10 @@ class HomeRepo {
 
       if (response.statusCode == 200) {
         // 1. نستقبل البيانات كقائمة
-        List<String> categories = List<String>.from(response.data);
+        List<String> categories = List<String>.from(
+          response.data,
+        ); // بنضيف خيار "الكل" في بداية القائمة
+        categories.insert(0, "All");
 
         // 3. نرجع النجاح
         return Right(categories);

@@ -20,6 +20,7 @@ class CategoriesCubit extends Cubit<CategoriesState> {
         emit(CategoriesError(error));
       }, //لو نجح: نبعت حالة النجاح ونمرر قائمة البيانات
       (right) {
+        // بنضيف خيار "الكل" في بداية القائمة
         emit(CategoriesLoaded((right)));
       },
     );

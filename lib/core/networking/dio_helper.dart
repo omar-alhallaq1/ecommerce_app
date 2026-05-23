@@ -37,7 +37,6 @@ class DioHelper {
     }
   }
 
-  // 4. دالة إرسال البيانات (POST Request) - زي ما استخدمناها في اللوجن
   Future<dynamic> postrequest({
     required String endpoint,
     Map<String, dynamic>? query,
@@ -45,6 +44,24 @@ class DioHelper {
   }) async {
     try {
       final response = await dio!.post(
+        endpoint,
+        queryParameters: query,
+        data: data,
+      );
+      return response;
+    } catch (e) {
+      // الـ rethrow هنا ممتازة وبتخلي الـ AuthRepo يقدر يعمل if (error is DioException)
+      rethrow;
+    }
+  }
+
+  Future<dynamic> putrequest({
+    required String endpoint,
+    Map<String, dynamic>? query,
+    required Map<String, dynamic> data, // البودي (Body) اللي بنبعته للسيرفر
+  }) async {
+    try {
+      final response = await dio!.put(
         endpoint,
         queryParameters: query,
         data: data,

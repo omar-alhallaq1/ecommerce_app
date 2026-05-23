@@ -1,10 +1,12 @@
+import 'package:ecommerce_app/core/features/cart_screen/model/cart_model.dart';
 import 'package:ecommerce_app/core/styling/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 class CartItemWidget extends StatelessWidget {
-  const CartItemWidget({super.key});
+  final Product product;
+  const CartItemWidget({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class CartItemWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Fit Polo T Shirt",
+                            "${product.productId}",
                             style: AppStyles.black18boldstyle,
                           ),
 

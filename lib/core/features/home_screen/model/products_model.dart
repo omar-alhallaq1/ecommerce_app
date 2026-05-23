@@ -3,7 +3,7 @@ class ProductModel {
   final String? title;
   final double? price;
   final String? description;
-  final String? category; // 👈 حولناها لـ String عادي بدل الـ Enum المعقد
+  final String? category;
   final String? image;
   final Rating? rating;
 
