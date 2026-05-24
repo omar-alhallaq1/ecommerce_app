@@ -2,7 +2,6 @@ import 'package:ecommerce_app/core/features/home_screen/cubit/categories_cubit.d
 import 'package:ecommerce_app/core/features/home_screen/cubit/categories_state.dart';
 import 'package:ecommerce_app/core/features/home_screen/cubit/product_cubit.dart';
 import 'package:ecommerce_app/core/features/home_screen/cubit/product_state.dart';
-import 'package:ecommerce_app/core/features/home_screen/model/products_model.dart';
 import 'package:ecommerce_app/core/features/home_screen/widgets/category_item_widget.dart';
 import 'package:ecommerce_app/core/features/home_screen/widgets/prodect_item_widget.dart';
 import 'package:ecommerce_app/core/routing/app_routes.dart';
@@ -14,23 +13,29 @@ import 'package:ecommerce_app/core/wedgets/loding_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   String selectedCat = "All";
+
   @override
   void initState() {
-    context.read<ProductCubit>().featchProducts();
-    context.read<CategoriesCubit>().fetchCategories();
     super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<ProductCubit>().featchProducts();
+      context.read<CategoriesCubit>().fetchCategories();
+    });
   }
 
   @override
@@ -41,11 +46,11 @@ class _HomeScreenState extends State<HomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Gap(59.h),
-          SizedBox(
-            width: 128.w,
-            child: Text("Discover", style: AppStyles.primaryheadlinestyle),
-          ),
+
+          Text("Discover", style: AppStyles.primaryheadlinestyle),
+
           Gap(16.h),
+
           Row(
             children: [
               CustomTextField(width: 281.w, hintText: "Search for Clothes"),
@@ -71,7 +76,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
+
           Gap(16.h),
+
+          /// ================= CATEGORIES =================
           BlocBuilder<CategoriesCubit, CategoriesState>(
             builder: (context, state) {
               if (state is CategoriesLoaded) {
@@ -81,73 +89,96 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: state.categories.map((cat) {
                       return CategoryItemWidget(
                         categoryName: cat,
-                        isSelected: selectedCat == cat ? true : false,
+                        isSelected: selectedCat == cat,
                         onTap: () {
                           setState(() {
                             selectedCat = cat;
-                            if (cat == "All") {
-                              context.read<ProductCubit>().featchProducts();
-                            } else {
-                              context
-                                  .read<ProductCubit>()
-                                  .featchProductsCategory(cat);
-                            }
                           });
+
+                          if (cat == "All") {
+                            context.read<ProductCubit>().featchProducts();
+                          } else {
+                            context.read<ProductCubit>().featchProductsCategory(
+                              cat,
+                            );
+                          }
                         },
                       );
                     }).toList(),
                   ),
                 );
               }
-              return SizedBox.shrink();
+
+              return const SizedBox();
             },
           ),
+
           Gap(16.h),
-          BlocBuilder<ProductCubit, ProductState>(
-            builder: (context, state) {
-              if (state is ProductLoading) {
-                return LodingWidget(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.5,
-                );
-              }
-              if (state is ProductLoaded) {
-                List<ProductModel> products = state.products;
-                return Expanded(
-                  child: RefreshIndicator(
+
+          /// ================= PRODUCTS =================
+          Expanded(
+            child: BlocBuilder<ProductCubit, ProductState>(
+              builder: (context, state) {
+                if (state is ProductLoading) {
+                  return const LodingWidget();
+                }
+
+                if (state is ProductLoaded) {
+                  final products = state.products;
+
+                  return RefreshIndicator(
                     color: AppColors.primarycolor,
                     backgroundColor: Colors.white,
                     onRefresh: () async {
-                      selectedCat = "All";
-                      setState(() {});
+                      setState(() {
+                        selectedCat = "All";
+                      });
+
                       context.read<ProductCubit>().featchProducts();
                     },
-                    child: GridView(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 8.w,
-                        mainAxisSpacing: 8.h,
-                        childAspectRatio: 0.9,
+                    child: AnimationLimiter(
+                      child: GridView.builder(
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 8.w,
+                          mainAxisSpacing: 8.h,
+                          childAspectRatio: 0.9,
+                        ),
+                        itemCount: products.length,
+                        itemBuilder: (context, index) {
+                          final product = products[index];
+
+                          return AnimationConfiguration.staggeredGrid(
+                            position: index,
+                            duration: const Duration(milliseconds: 600),
+                            columnCount: 2,
+                            child: SlideAnimation(
+                              verticalOffset: 200.0,
+                              child: FadeInAnimation(
+                                child: ProdectItemWidget(
+                                  image: product.image ?? "",
+                                  title: product.title ?? "",
+                                  price: product.price?.toString() ?? "",
+                                  onTap: () {
+                                    GoRouter.of(context).pushNamed(
+                                      AppRoutes.productdetailsScreen,
+                                      extra: product,
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       ),
-                      children: products.map((product) {
-                        return ProdectItemWidget(
-                          image: product.image ?? "",
-                          title: product.title ?? "",
-                          price: product.price?.toString() ?? "",
-                          onTap: () {
-                            GoRouter.of(context).pushNamed(
-                              AppRoutes.productdetailsScreen,
-                              extra: product,
-                            );
-                          },
-                        );
-                      }).toList(),
                     ),
-                  ),
-                );
-              }
-              return Text("this is error");
-            },
+                  );
+                }
+
+                return const SizedBox();
+              },
+            ),
           ),
         ],
       ),

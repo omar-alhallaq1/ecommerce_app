@@ -34,14 +34,17 @@ class ProductDitailsScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Gap(20.h),
-                  Container(
+                  SizedBox(
                     height: 341.h,
                     width: 341.w,
-                    child: CachedNetworkImage(
-                      imageUrl: product.image ?? "",
-                      height: 300.h,
-                      width: double.infinity,
-                      fit: BoxFit.contain,
+                    child: Hero(
+                      tag: "product${product.title}",
+                      child: CachedNetworkImage(
+                        imageUrl: product.image ?? "",
+                        height: 300.h,
+                        width: double.infinity,
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                   Gap(12.h),

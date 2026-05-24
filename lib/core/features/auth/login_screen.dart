@@ -35,13 +35,6 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
     userName = TextEditingController();
     password = TextEditingController();
-    sl<StorageHelpar>().getToken().then((value) {
-      if (value != null && value.isNotEmpty) {
-        //  الحارس السحري: للتأكد إن الشاشة لسه حية وما سكرت أثناءالـ Async
-        if (!mounted) return;
-        GoRouter.of(context).pushReplacementNamed(AppRoutes.mainScreen);
-      }
-    });
   }
 
   @override

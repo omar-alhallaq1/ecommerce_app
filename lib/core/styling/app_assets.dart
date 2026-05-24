@@ -1,6 +1,7 @@
 class AppAssets {
   static const iconpath = "assets/icon/";
   static const lottiepath = "assets/lottie/";
+  static const imagepath = "assets/image/";
 
   static const String lodinglottie = "${lottiepath}loading.json";
   static const String homeSvg = "${iconpath}Home.svg";
@@ -17,4 +18,5 @@ class AppAssets {
   static const String chevron = "${iconpath}Chevron.svg";
   static const String logout = "${iconpath}Logout.svg";
   static const String location = "${iconpath}Location.svg";
+  static const String logo = "${imagepath}logo.png";
 }

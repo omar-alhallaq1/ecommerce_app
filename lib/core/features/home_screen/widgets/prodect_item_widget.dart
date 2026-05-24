@@ -28,11 +28,14 @@ class ProdectItemWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: CachedNetworkImage(
-                width: double.infinity,
-                height: 150.h,
-                imageUrl: image,
-                fit: BoxFit.cover,
+              child: Hero(
+                tag: "product$title",
+                child: CachedNetworkImage(
+                  width: double.infinity,
+                  height: 150.h,
+                  imageUrl: image,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
 
