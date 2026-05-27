@@ -6,8 +6,6 @@ import 'package:ecommerce_app/core/routing/router_genretion_config.dart';
 import 'package:ecommerce_app/core/styling/app_colors.dart';
 import 'package:ecommerce_app/core/styling/app_styles.dart';
 import 'package:ecommerce_app/core/utils/animated_snak_dailog.dart';
-import 'package:ecommerce_app/core/utils/service_locator.dart';
-import 'package:ecommerce_app/core/utils/storage_helpar.dart';
 import 'package:ecommerce_app/core/wedgets/custom_text_field.dart';
 import 'package:ecommerce_app/core/wedgets/loding_widget.dart';
 import 'package:ecommerce_app/core/wedgets/primary_button_wedgit.dart';
