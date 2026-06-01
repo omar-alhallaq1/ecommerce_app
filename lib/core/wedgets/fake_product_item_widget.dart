@@ -10,7 +10,7 @@ class FakeProductitemWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 7.h),
       decoration: BoxDecoration(
-        color: Colors.white, // لون خلفية الكارد
+        color: Colors.white,
         borderRadius: BorderRadius.circular(15.r),
       ),
       child: Column(
@@ -18,17 +18,14 @@ class FakeProductitemWidget extends StatelessWidget {
         children: [
           // 1. مربع الصورة الوهمي
           Expanded(
-            child: Container(
-              width: double.infinity,
-              color: Colors.white, // اللون الأبيض رح يلمع بسبب الشيمر
-            ),
+            child: Container(width: double.infinity, color: Colors.grey[300]),
           ),
           Gap(8.h),
           // 2. مستطيل النص الوهمي (العنوان)
-          Container(width: 100.w, height: 15.h, color: Colors.white),
+          Container(width: 100.w, height: 15.h, color: Colors.grey[300]),
           Gap(8.h),
           // 3. مستطيل السعر الوهمي
-          Container(width: 50.w, height: 15.h, color: Colors.white),
+          Container(width: 50.w, height: 15.h, color: Colors.grey[300]),
         ],
       ),
     );
