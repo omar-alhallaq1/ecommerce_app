@@ -19,4 +19,5 @@ class AppAssets {
   static const String logout = "${iconpath}Logout.svg";
   static const String location = "${iconpath}Location.svg";
   static const String logo = "${imagepath}logo.png";
+  static const String warning = "${iconpath}warning.svg";
 }

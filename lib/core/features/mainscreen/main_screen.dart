@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/features/acount_screen/acount_screen.dart';
+import 'package:ecommerce_app/core/features/auth/cubit/auth_cubit.dart';
 import 'package:ecommerce_app/core/features/cart_screen/cart_screen.dart';
 import 'package:ecommerce_app/core/features/cart_screen/cubit/cart_cubit.dart';
 import 'package:ecommerce_app/core/features/home_screen/cubit/categories_cubit.dart';
@@ -30,7 +31,7 @@ class MainScreenState extends State<MainScreen> {
       child: HomeScreen(),
     ),
     CartScreen(),
-    AcountScreen(),
+    BlocProvider(create: (context) => sl<AuthCubit>(), child: AcountScreen()),
   ];
   @override
   Widget build(BuildContext context) {
