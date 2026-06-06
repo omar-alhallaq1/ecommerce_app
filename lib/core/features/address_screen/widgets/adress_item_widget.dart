@@ -71,7 +71,7 @@ class AdressItemWidget extends StatelessWidget {
                   style: AppStyles.gry12meduemstyle.copyWith(fontSize: 14.sp),
                   maxLines: 1,
                   overflow:
-                      TextOverflow.ellipsis, // لإضافة "..." لو النص طويل جداً
+                      TextOverflow.ellipsis, // لإضافة "..." لو النص طويلاً
                 ),
               ],
             ),
