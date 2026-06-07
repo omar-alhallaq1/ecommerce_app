@@ -7,12 +7,6 @@
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg" alt="Dart" width="90">
   </a>
 </p>
-
-<!-- أنيميشن الكتابة التلقائية الموثوق -->
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=36&pause=1500&color=02569B&center=true&vCenter=true&width=800&lines=Enterprise+E-Commerce+Application;Built+with+Flutter+%26+Dart;Clean+Architecture+%2B+BLoC;Scalable.+Robust.+Fast." alt="Typing Animation">
-</p>
-
 <p align="center">
   <img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=flat&logo=Flutter&logoColor=white" alt="Flutter">
   <img src="https://img.shields.io/badge/Dart-%230175C2.svg?style=flat&logo=dart&logoColor=white" alt="Dart">
