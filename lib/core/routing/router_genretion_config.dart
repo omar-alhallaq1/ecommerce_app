@@ -38,15 +38,15 @@ class RouterGenretionConfig {
 
         builder: (context, state) => const SignupScreen(),
       ),
-      GoRoute(
-        name: AppRoutes.mainScreen,
-        path: AppRoutes.mainScreen,
+        GoRoute(
+          name: AppRoutes.mainScreen,
+          path: AppRoutes.mainScreen,
 
-        builder: (context, state) => BlocProvider(
-          create: (context) => sl<CartCubit>(),
-          child: const MainScreen(),
+          builder: (context, state) => BlocProvider(
+            create: (context) => sl<CartCubit>(),
+            child: const MainScreen(),
+          ),
         ),
-      ),
       GoRoute(
         name: AppRoutes.productdetailsScreen,
         path: AppRoutes.productdetailsScreen,

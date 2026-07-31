@@ -22,7 +22,7 @@ class ProductModel {
     return ProductModel(
       id: json['id'],
       title: json['title'],
-      // 🛡️ حماية ذكية: أحياناً السيرفر بيرجع السعر 20 بدل 20.0، فهاد السطر بيحميك من الكراش
+      //  حماية ذكية: أحياناً السيرفر بيرجع السعر 20 بدل 20.0، فهاد السطر بيحميك من الكراش
       price: json['price']?.toDouble(),
       description: json['description'],
       category: json['category'], // بناخذ اسم القسم كنص مباشر
